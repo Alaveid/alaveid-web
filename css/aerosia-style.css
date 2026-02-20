@@ -1,4 +1,4 @@
-/* ALAPVETŐ VÁLTOZÓK */
+/* BASE VARIABLES */
 :root {
     --gold: #d4af37;
     --gold-glow: rgba(212, 175, 55, 0.4);
@@ -18,7 +18,7 @@ body {
     line-height: 1.6;
 }
 
-/* HÁTTÉR EFFEKTEK */
+/* BACKGROUND EFFECTS */
 .ambient-glow {
     position: fixed; top: 0; left: 50%; transform: translateX(-50%);
     width: 80vw; height: 80vh;
@@ -37,7 +37,7 @@ body {
 
 @keyframes drift { 0% { background-position: 0 0; } 100% { background-position: 50px 50px; } }
 
-/* NAVIGÁCIÓ */
+/* NAVIGATION */
 .top-nav { padding: 20px 40px; position: absolute; top: 0; left: 0; width: 100%; z-index: 10; }
 .back-btn { 
     color: var(--text-muted); text-decoration: none; font-family: 'JetBrains Mono'; 
@@ -45,10 +45,10 @@ body {
 }
 .back-btn:hover { color: var(--gold); }
 
-/* KÖZÖS KONTÉNER */
+/* COMMON CONTAINER */
 .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
 
-/* HERO SZEKCIÓ */
+/* HERO SECTION */
 .hero { 
     min-height: 90vh; display: flex; flex-direction: column; 
     justify-content: center; align-items: center; text-align: center;
@@ -71,7 +71,7 @@ body {
 
 .hero-actions { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 
-/* GOMBOK */
+/* BUTTONS */
 .btn {
     padding: 15px 35px; text-decoration: none; font-family: 'Orbitron'; font-weight: 700;
     text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; border-radius: 4px;
@@ -82,7 +82,7 @@ body {
 .secondary-btn { background: transparent; border: 1px solid var(--text-muted); color: var(--text-main); }
 .secondary-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-/* SZEKCIÓ CÍMEK */
+/* SECTION TITLES */
 .section-title { font-family: 'Orbitron'; font-size: 2rem; color: var(--gold); margin-bottom: 40px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 10px; }
 
 /* FEATURES GRID */
@@ -92,7 +92,7 @@ body {
 .feature-card h3 { font-family: 'Orbitron'; color: var(--text-main); margin-bottom: 15px; }
 .feature-card p { color: var(--text-muted); font-size: 0.9rem; }
 
-/* DEVLOG */
+/* DEVLOG SECTION */
 .devlog-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
 .devlog-image-placeholder { height: 250px; background: #1a2333; display: flex; align-items: center; justify-content: center; color: #444; font-family: 'JetBrains Mono'; border-bottom: 1px solid var(--gold); }
 .devlog-content { padding: 30px; }
@@ -102,13 +102,44 @@ body {
 .read-more { color: var(--gold); text-decoration: none; font-weight: bold; font-family: 'JetBrains Mono'; font-size: 0.8rem; }
 .read-more:hover { text-decoration: underline; }
 
-/* SUPPORT SZEKCIÓ */
+/* SUPPORT SECTION */
 .support-box { background: linear-gradient(135deg, var(--card-bg), #000); padding: 60px 40px; border-radius: 12px; text-align: center; border: 1px solid var(--gold); }
 .support-box p { max-width: 600px; margin: 20px auto; color: var(--text-muted); }
 
 /* FOOTER */
 footer { text-align: center; padding: 40px; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: #444; border-top: 1px solid #111; margin-top: 50px; }
 
-/* JS Animációhoz (Fade in) */
+/* JS Animation (Fade in) */
 .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* --- MOBILE FIX --- */
+@media (max-width: 768px) {
+    /* Compress menu and headers */
+    .navbar { flex-direction: column; padding: 15px; text-align: center; }
+    .nav-links { flex-direction: column; gap: 15px; margin-top: 15px; }
+    
+    /* Reduce font sizes for fitting */
+    .logo, .game-title { font-size: 2.5rem !important; letter-spacing: 2px !important; }
+    .hero-desc, .intro { font-size: 0.95rem !important; padding: 0 10px; }
+    
+    /* Adjust cards and boxes for mobile */
+    .card, .card-inner, .feature-card, .support-box, .about-card { 
+        padding: 25px 15px !important; 
+        margin-bottom: 30px !important;
+        width: 100% !important;
+    }
+    
+    /* Stack grid columns */
+    .about-details, .features, .devlog-grid { 
+        grid-template-columns: 1fr !important; 
+        gap: 20px;
+    }
+    
+    /* Buttons and badges */
+    .hero-actions { flex-direction: column; width: 100%; }
+    .btn { display: block; width: 100%; margin-bottom: 10px; text-align: center; }
+    
+    /* Global margins */
+    .container { padding: 40px 15px !important; }
+}
