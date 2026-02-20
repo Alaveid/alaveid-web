@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff5f6d, #ffc371);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            padding-top: 15vh;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 0.2em;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .construction-icon {
+            font-size: 6em;
+            margin: 0 0 0.5em 0;
+            line-height: 1;
+            animation: bounce 1.5s infinite, flicker 2s infinite;
+        }
+
+        .robot {
+            font-size: 4em;
+            margin-top: 1em;
+            animation: moveRobot 3s infinite linear;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); } 
+        }
+
+        @keyframes flicker {
+            0%, 19%, 21%, 50%, 51%, 100% { opacity: 1; }
+            20%, 50% { opacity: 0.5; }
+        }
+
+        @keyframes moveRobot {
+            0% { transform: translateX(-200px); }
+            50% { transform: translateX(200px); }
+            100% { transform: translateX(-200px); }
+        }
+
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(1); }
+            50% { opacity: 1; transform: translateY(-100px) scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-icon">🚧</div>
+    <h1>Alaveid Academy</h1>
+    <p>We're building something awesome. Stay tuned!</p>
+    <div class="robot">🤖</div>
+
+    <div class="spark" style="top:80%; left:20%; animation-delay:0s;"></div>
+    <div class="spark" style="top:60%; left:50%; animation-delay:0.5s;"></div>
+    <div class="spark" style="top:70%; left:70%; animation-delay:1s;"></div>
+</body>
+</html>

@@ -1,0 +1,198 @@
+:root {
+    --gold: #d4af37;
+    --gold-light: #f6d365;
+    --bg-dark: #070b12;
+    --bg-card: #0f1724;
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at 50% 20%, #111827 0%, var(--bg-dark) 60%);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.7;
+    cursor: none;
+}
+
+/* ===============================
+   BACKGROUND PARTICLES
+=================================*/
+.stars, .stars2 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+    animation: moveStars 200s linear infinite;
+    opacity: 0.3;
+    z-index: -3;
+}
+.stars2 { animation-duration: 120s; opacity: 0.15; z-index: -2; }
+@keyframes moveStars { from {background-position:0 0;} to {background-position:0 -2000px;} }
+
+.glow-orb {
+    position: fixed;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+    top: 10%; left: 50%;
+    transform: translateX(-50%);
+    filter: blur(60px);
+    animation: pulse 8s ease-in-out infinite alternate;
+    z-index: -1;
+}
+@keyframes pulse { from { transform: translateX(-50%) scale(1); } to { transform: translateX(-50%) scale(1.2); } }
+
+.container { max-width: 1100px; margin:0 auto; padding:0 20px; }
+
+/* ===============================
+   NAVBAR
+=================================*/
+.navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(7,11,18,0.95);
+    padding: 15px 40px;
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+.navbar.shrink { padding: 8px 40px; }
+.navbar .logo { font-family: 'Orbitron'; font-size: 1.8rem; background: linear-gradient(90deg,#fff,var(--gold),#fff); -webkit-background-clip:text; color:transparent; }
+.nav-links { display:flex; gap:25px; list-style:none; }
+.nav-links li a { text-decoration:none; color:var(--text-main); font-family:'JetBrains Mono'; transition:0.3s; }
+.nav-links li a:hover { color: var(--gold); }
+
+/* ===============================
+   HERO
+=================================*/
+header {
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    animation: fadeIn 1.5s ease forwards, subtleShake 6s infinite;
+}
+header .logo { font-family: 'Orbitron'; font-size: clamp(3rem,8vw,6rem); font-weight:900; letter-spacing:12px; background: linear-gradient(90deg,#fff,var(--gold),#fff); background-size:200% auto; color:transparent; -webkit-background-clip:text; text-shadow:0 0 40px rgba(212,175,55,0.4); }
+.tagline { font-family:'JetBrains Mono'; color:var(--gold); letter-spacing:4px; margin-top:20px; text-transform:uppercase; }
+.btn { display:inline-block; padding:15px 35px; border:1px solid var(--gold); color:var(--gold); text-decoration:none; font-family:'JetBrains Mono'; margin-top:25px; transition:0.3s; }
+.btn:hover { background:var(--gold); color:#000; box-shadow:0 0 25px rgba(212,175,55,0.5); }
+
+@keyframes fadeIn { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes subtleShake {
+    0% { transform: translate(0,0);}
+    25% { transform: translate(0.5px,-0.5px);}
+    50% { transform: translate(-0.5px,0.5px);}
+    75% { transform: translate(0.5px,0.5px);}
+    100% { transform: translate(0,0);}
+}
+
+/* ===============================
+   SECTIONS
+=================================*/
+.section-title { font-family:'Orbitron'; text-align:center; font-size:2rem; margin:100px 0 50px; letter-spacing:3px; }
+.card { background:var(--bg-card); padding:60px; border-radius:20px; margin-bottom:60px; position:relative; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.6); transition: transform 0.4s ease; }
+.card:hover { transform:translateY(-10px); }
+.card::before { content:""; position:absolute; inset:0; padding:2px; background:linear-gradient(45deg,transparent,var(--gold),transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; border-radius:20px; }
+.status { display:inline-block; padding:6px 14px; border:1px solid var(--gold); color:var(--gold); font-family:'JetBrains Mono'; font-size:0.75rem; margin-bottom:20px; }
+.card h3 { font-family:'Orbitron'; font-size:2rem; margin-bottom:20px; }
+.card p { color:var(--text-muted); }
+.feature-list { margin-top:30px; display:flex; flex-wrap:wrap; gap:15px; }
+.feature-list span { font-family:'JetBrains Mono'; font-size:0.8rem; border:1px solid rgba(212,175,55,0.3); padding:8px 16px; border-radius:5px; color:var(--gold); }
+
+/* ===============================
+   SOCIALS + FOOTER
+=================================*/
+.socials { display:flex; justify-content:center; gap:30px; margin:60px 0; }
+.socials a { color: var(--text-muted); text-decoration:none; transition:0.3s; }
+.socials a:hover { color: var(--gold); }
+footer { text-align:center; padding:50px; font-family:'JetBrains Mono'; font-size:0.75rem; color:#4b5563; }
+
+/* ===============================
+   GOLD CURSOR + PARTICLE
+=================================*/
+.gold-cursor { position: fixed; width:12px; height:12px; border-radius:50%; background:radial-gradient(circle,var(--gold) 0%,rgba(212,175,55,0.3)60%,transparent 80%); pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform 0.05s linear;}
+a:hover ~ .gold-cursor { transform:scale(1.8); }
+.particle { position:fixed; width:6px;height:6px;border-radius:50%;background:var(--gold);pointer-events:none;opacity:0.8;animation:fadeOut 0.6s forwards;z-index:9997;}
+@keyframes fadeOut { to { opacity:0; transform:scale(0.3); } }
+
+/* ===============================
+   FADE-IN ANIMATION
+=================================*/
+.hidden { opacity:0; transform:translateY(40px); transition: all 0.8s ease; }
+.visible { opacity:1; transform:translateY(0); }
+
+/* ===============================
+   CINEMATIC INTRO
+=================================*/
+#intro {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.intro-logo {
+    font-family: 'Orbitron';
+    font-size: clamp(2rem, 6vw, 5rem);
+    letter-spacing: 10px;
+    background: linear-gradient(90deg,#fff,var(--gold),#fff);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: introAppear 2s ease forwards, shine 3s linear infinite;
+}
+
+@keyframes introAppear {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+#intro.fade-out {
+    animation: introFadeOut 2s ease forwards;
+}
+
+@keyframes introFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+.card a.btn {
+    pointer-events: auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* ===============================
+   ABOUT US
+=================================*/
+#about .card {
+    padding: 40px; /* kisebb padding */
+    max-width: 800px; /* ne legyen túl széles */
+    margin: 0 auto 60px auto; /* középre */
+}
+
+#about p {
+    font-size: 0.95rem; /* kicsit kisebb szöveg */
+    line-height: 1.5;
+}
